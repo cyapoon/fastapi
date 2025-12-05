@@ -12,7 +12,7 @@ DB_USER = os.getenv("DB_USER")
 DB_HOST = os.getenv("DB_HOST")
 DB_NAME = os.getenv("DB_NAME")
 
-SQLALCHEMY_DATABASE_URL = os.getenv("DB_URL")
+SQLALCHEMY_DATABASE_URL = f"postgresql+psycopg://{DB_USER}:{DB_PWD}@{DB_HOST}/{DB_NAME}"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
