@@ -42,7 +42,7 @@ async def create_post(post: schemas.PostCreate, db: Session = Depends(get_db),
 
 # @router.get("/{id}", response_model=schemas.PostOut)
 @router.get("/{id}")
-async def get_post(id: int, db: Session = Depends(get_db)):
+async def get_post(id: int, db: Session = Depends(get_db), current_user = Depends(get_current_user)):
     # cursor.execute("""select * from posts where id = %s""", (id,))
     # post = cursor.fetchone()
     # print(post)
@@ -52,7 +52,7 @@ async def get_post(id: int, db: Session = Depends(get_db)):
     post = db.query(models.Post, func.count(models.Vote.post_id).label("votes")).join(
         models.Vote, models.Vote.post_id == models.Post.id, isouter=True).group_by(models.Post.id).filter(
             models.Post.id == id).first()
-    print(post)
+    # print(post)
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"post with id: {id} was not found")
@@ -74,7 +74,7 @@ async def delete_post(id: int, db: Session = Depends(get_db),
     if post.owner_id != current_user.id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
                             detail="Not autherized to perform requested action.")
-    post.delete(synchronize_session=False)
+    post_query.delete(synchronize_session=False)
     db.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 

@@ -28,7 +28,10 @@ class PostCreate(PostBase):
 
 class Post(BaseModel):
     id: int
+    title: str
+    content:str
     created_at: datetime
+    published: bool
     owner_id: int
     owner: UserOut
     

@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, timezone
 from app import models, schemas, database
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
-load_dotenv(override=True)
+load_dotenv()
 import os
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
