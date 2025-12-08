@@ -19,7 +19,6 @@ jobs:
         with: 
           python-version: "3.12"
       - name: update pip
-        runs: python -m pip install --upgrade pip
+        run: python -m pip install --upgrade pip
       - name: install all dependencies
-        runs: pip install -r requirements.txt
-        
+        run: pip install -r requirements.txt
