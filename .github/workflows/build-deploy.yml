@@ -13,6 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
-        uses: actions/checkout@v2
-      - name: say hi
-        run: echo "hello"
+        uses: actions/checkout@v5
+      - name: Install python version 3.12
+        uses: actions/setup-python@v6
+        with: 
+          python-version: "3.12"
+      - name: update pip
+        runs: python -m pip install --upgrade pip
+      - name: install all dependencies
+        runs: pip install -r requirements.txt
+        
