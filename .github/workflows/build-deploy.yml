@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgre
+        image: postgres
         env:  
           DB_PWD: ${{secrets.DB_PWD}}
           DB_NAME: ${{secrets.DB_NAME}}_test
