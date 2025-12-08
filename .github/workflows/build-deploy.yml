@@ -21,6 +21,20 @@ jobs:
       ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}} 
       DB_URL: ${{secrets.DB_URL}}
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgre
+        env:  
+          DB_PWD: ${{secrets.DB_PWD}}
+          DB_NAME: ${{secrets.DB_NAME}}_test
+          DB_URL: ${{secrets.DB_URL}}_test
+        ports: 
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: pulling git repo
         uses: actions/checkout@v5
