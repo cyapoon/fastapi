@@ -12,7 +12,7 @@ ALGORITHM = os.getenv("HS256")
 def test_root(client):
     res = client.get("/")
     assert res.json().get("message") == "Hello, World"
-    assert res.status_code == 200
+    assert res.status_code == 201 # change from 200
     
 def test_create_user(client):
     res = client.post("/users/", json={"email": "hello123@gmail.com", "password": "asd123"})
