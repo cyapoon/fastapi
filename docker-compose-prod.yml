@@ -1,7 +1,7 @@
 
 services:
   api:
-    build: cyapoon/fastapi
+    build: <user_name>/fastapi
     depends_on:
       - postgres
     ports:

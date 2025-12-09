@@ -9,7 +9,7 @@ FastAPI + SQLAlchemy + PostgreSQL starter that provides user auth (JWT), posts, 
 
 ## 2) Setup (local)
 ```bash
-cd /home/cyapoon/fastapi
+cd /home/<user_name>/fastapi
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
