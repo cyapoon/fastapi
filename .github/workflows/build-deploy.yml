@@ -102,4 +102,4 @@ jobs:
             cd fastapi
             git pull origin main
             pip install -r requirements.txt
-            sudo systemctl restart fastapi
+            sudo service fastapi restart
