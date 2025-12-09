@@ -43,9 +43,9 @@ Health check: `http://localhost:8000/`
 ```bash
 docker compose -f docker-compose-dev.yml up --build
 ```
-- Prod example (uses image tag `cyapoon/fastapi`; build or pull first):
+- Prod example (uses image tag `<user_name>/fastapi`; build or pull first):
 ```bash
-docker build -t cyapoon/fastapi .
+docker build -t <user_name>/fastapi .
 docker compose -f docker-compose-prod.yml up -d
 ```
 Place `.env` in the repo root so the container can read DB and JWT settings.
@@ -61,7 +61,7 @@ Ensure the test database exists and credentials in `.env` match.
 ### Option A: Docker Compose (recommended)
 1. Copy code and `.env` to the VM.
 2. Install Docker and Docker Compose.
-3. Build or pull image: `docker build -t cyapoon/fastapi .` (or `docker pull cyapoon/fastapi`).
+3. Build or pull image: `docker build -t <user_name>/fastapi .` (or `docker pull <user_name>/fastapi`).
 4. Start: `docker compose -f docker-compose-prod.yml up -d`.
 5. Open the desired port (default 8000) in firewall/security group or map to 80/443.
 
