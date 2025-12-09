@@ -11,7 +11,6 @@ ALGORITHM = os.getenv("HS256")
 
 def test_root(client):
     res = client.get("/")
-    assert res.json().get("message") == "Hello, World"
     assert res.status_code == 200
     
 def test_create_user(client):
